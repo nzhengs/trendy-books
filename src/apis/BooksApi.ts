@@ -11,14 +11,47 @@ const trendingBooksDoc = graphql(`
   }
 `)
 
+const bookSummaryDoc = graphql(`
+  query GetBookSummary($ids: [Int!]!) {
+    list_books(where: { id: { _in: $ids } }) {
+      book {
+        id
+        title
+        subtitle
+        slug
+        contributions {
+          author {
+            id
+            name
+          }
+        }
+        rating
+      }
+    }
+  }
+`)
+
 export type UseTrendingBooksParams = {
   from: string
   to: string
 }
 
+const fetchTrendingBooksIds = (params: UseTrendingBooksParams) =>
+  hardcoverClient
+    .request(trendingBooksDoc, params)
+    .then((data) => data.books_trending?.ids ?? [])
+    .then((ids) => ids.filter((id) => id !== null))
+
+const fetchTrendingBooksSummaries = (params: UseTrendingBooksParams) =>
+  fetchTrendingBooksIds(params).then((ids) =>
+    hardcoverClient
+      .request(bookSummaryDoc, { ids })
+      .then((data) => data.list_books),
+  )
+
 export const useTrendingBooks = (params: UseTrendingBooksParams) =>
   useQuery({
     queryKey: ['trendingBooks', params],
-    queryFn: () => hardcoverClient.request(trendingBooksDoc, params),
+    queryFn: () => fetchTrendingBooksSummaries(params),
     staleTime: 1 * 60 * 60 * 1000, // 1 hour
   })
