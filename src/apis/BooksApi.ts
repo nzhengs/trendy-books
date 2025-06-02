@@ -1,22 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
-import { GraphQLClient } from 'graphql-request'
 import { graphql } from './hardcover/graphql'
+import { hardcoverClient } from './hardcover/client'
 
-// Ref: https://docs.hardcover.app/api/getting-started/
-
-const endpoint = 'https://api.hardcover.app/v1/graphql'
-const authorization = import.meta.env.VITE_HARDCOVER_API_KEY
-
-console.assert(
-  Boolean(authorization),
-  'VITE_HARD_COVER_API_KEY is not defined. Please set the api key on .env.local file.',
-)
-
-const hardcoverClient = new GraphQLClient(endpoint, {
-  headers: { authorization },
-})
-
-const trendingBooksGql = graphql(`
+const trendingBooksDoc = graphql(`
   query GetTrendingBooks($from: date!, $to: date!) {
     books_trending(from: $from, to: $to, offset: 10, limit: 10) {
       ids
@@ -33,6 +19,6 @@ export type UseTrendingBooksParams = {
 export const useTrendingBooks = (params: UseTrendingBooksParams) =>
   useQuery({
     queryKey: ['trendingBooks', params],
-    queryFn: () => hardcoverClient.request(trendingBooksGql, params),
+    queryFn: () => hardcoverClient.request(trendingBooksDoc, params),
     staleTime: 1 * 60 * 60 * 1000, // 1 hour
   })
