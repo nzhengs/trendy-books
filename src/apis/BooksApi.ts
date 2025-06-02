@@ -32,4 +32,5 @@ export const useTrendingBooks = (params: UseTrendingBooksParams) =>
   useQuery({
     queryKey: ['trendingBooks', params],
     queryFn: () => hardcoverClient.request(trendingBooksGql, params),
+    staleTime: 1 * 60 * 60 * 1000 // 1 hour
   })
