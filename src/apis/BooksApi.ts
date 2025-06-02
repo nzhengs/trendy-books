@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import { gql, GraphQLClient } from 'graphql-request'
+import { GraphQLClient } from 'graphql-request'
+import { graphql } from './hardcover/graphql'
 
 // Ref: https://docs.hardcover.app/api/getting-started/
 
@@ -15,14 +16,15 @@ const hardcoverClient = new GraphQLClient(endpoint, {
   headers: { authorization },
 })
 
-const trendingBooksGql = gql`
-  query trendingBooksQuery($from: date!, $to: date!) {
+const trendingBooksGql = graphql(`
+  query GetTrendingBooks($from: date!, $to: date!) {
     books_trending(from: $from, to: $to, offset: 10, limit: 10) {
       ids
       error
     }
   }
-`
+`)
+
 export type UseTrendingBooksParams = {
   from: string
   to: string
@@ -32,5 +34,5 @@ export const useTrendingBooks = (params: UseTrendingBooksParams) =>
   useQuery({
     queryKey: ['trendingBooks', params],
     queryFn: () => hardcoverClient.request(trendingBooksGql, params),
-    staleTime: 1 * 60 * 60 * 1000 // 1 hour
+    staleTime: 1 * 60 * 60 * 1000, // 1 hour
   })
