@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { graphql } from './hardcover/graphql'
 import { hardcoverClient } from './hardcover/client'
 
-const trendingBooksDoc = graphql(`
+export const trendingBooksDoc = graphql(`
   query GetTrendingBooks($from: date!, $to: date!) {
     books_trending(from: $from, to: $to, offset: 10, limit: 10) {
       ids
@@ -11,7 +11,7 @@ const trendingBooksDoc = graphql(`
   }
 `)
 
-const bookSummaryDoc = graphql(`
+export const bookSummaryDoc = graphql(`
   query GetBookSummary($ids: [Int!]!) {
     list_books(where: { id: { _in: $ids } }) {
       book {
