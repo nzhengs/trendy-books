@@ -26,6 +26,7 @@ const bookSummaryDoc = graphql(`
           }
         }
         rating
+        slug
       }
     }
   }
@@ -46,7 +47,7 @@ const fetchTrendingBooksSummaries = (params: UseTrendingBooksParams) =>
   fetchTrendingBooksIds(params).then((ids) =>
     hardcoverClient
       .request(bookSummaryDoc, { ids })
-      .then((data) => data.list_books),
+      .then((data) => data.list_books.map((b) => b.book)),
   )
 
 export const useTrendingBooks = (params: UseTrendingBooksParams) =>
@@ -55,3 +56,8 @@ export const useTrendingBooks = (params: UseTrendingBooksParams) =>
     queryFn: () => fetchTrendingBooksSummaries(params),
     staleTime: 1 * 60 * 60 * 1000, // 1 hour
   })
+
+type BookSummaries = Awaited<ReturnType<typeof fetchTrendingBooksSummaries>>
+export type BookSummaryT = BookSummaries[number]
+export type BookContributions = BookSummaryT['contributions']
+export type BookAuthor = BookContributions[number]['author']

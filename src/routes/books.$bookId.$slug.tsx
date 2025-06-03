@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 
-export const Route = createFileRoute('/$bookId')({
+export const Route = createFileRoute('/books/$bookId/$slug')({
   component: TanStackQueryDemo,
 })
 
