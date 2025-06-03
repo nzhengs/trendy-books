@@ -7,7 +7,7 @@ const authorization = import.meta.env.VITE_HARDCOVER_API_KEY
 
 console.assert(
   Boolean(authorization),
-  'VITE_HARD_COVER_API_KEY is not defined. Please set the api key on .env.local file.',
+  'VITE_HARDCOVER_API_KEY is not defined. Please set the api key on .env.local file.',
 )
 
 export const hardcoverClient = new GraphQLClient(endpoint, {
