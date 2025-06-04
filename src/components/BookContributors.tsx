@@ -1,11 +1,11 @@
-import type { BookContributions } from '@/apis/BooksApi.ts'
+import type { BookContributions } from '@/apis/BooksApi.ts';
 
 export type BookContributorsProps = {
-  contributions: BookContributions
-}
+  contributions: BookContributions;
+};
 
 export const BookContributors = ({ contributions }: BookContributorsProps) => {
-  const authors = contributions.map(c => c.author)
+  const authors = contributions.map(c => c.author);
 
   return (
     <p>
@@ -14,5 +14,5 @@ export const BookContributors = ({ contributions }: BookContributorsProps) => {
         <span key={author?.id}>{author?.name}</span>
       ))}
     </p>
-  )
-}
+  );
+};

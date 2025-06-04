@@ -1,10 +1,10 @@
-import type { BookSummaryT } from '@/apis/BooksApi.ts'
-import { BookContributors } from './BookContributors'
-import { Link } from '@tanstack/react-router'
+import type { BookSummaryT } from '@/apis/BooksApi.ts';
+import { BookContributors } from './BookContributors';
+import { Link } from '@tanstack/react-router';
 
 export type BookSummaryProps = {
-  book: BookSummaryT
-}
+  book: BookSummaryT;
+};
 
 export const BookSummary = ({ book }: BookSummaryProps) => {
   return (
@@ -25,5 +25,5 @@ export const BookSummary = ({ book }: BookSummaryProps) => {
         Detail
       </Link>
     </li>
-  )
-}
+  );
+};

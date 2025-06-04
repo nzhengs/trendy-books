@@ -1,15 +1,15 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { renderHook } from '@testing-library/react'
-import type { PropsWithChildren } from 'react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { renderHook } from '@testing-library/react';
+import type { PropsWithChildren } from 'react';
 
 const createQueryClient = () =>
-  new QueryClient({ defaultOptions: { queries: { retry: false } } })
+  new QueryClient({ defaultOptions: { queries: { retry: false } } });
 
 const ApiTestProviders = ({ children }: PropsWithChildren) => (
   <QueryClientProvider client={createQueryClient()}>
     {children}
   </QueryClientProvider>
-)
+);
 
 /**
  * Renders a hook with a query client wrapper.
@@ -18,4 +18,4 @@ const ApiTestProviders = ({ children }: PropsWithChildren) => (
  */
 export const renderHookWithQuery = <TResult, TProps>(
   render: (initialProps: TProps) => TResult,
-) => renderHook(render, { wrapper: ApiTestProviders })
+) => renderHook(render, { wrapper: ApiTestProviders });

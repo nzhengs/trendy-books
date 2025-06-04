@@ -1,4 +1,4 @@
-import type { BookSummaryT } from '@/apis/BooksApi.ts'
+import type { BookSummaryT } from '@/apis/BooksApi.ts';
 
 export const book1: BookSummaryT = {
   id: 561569,
@@ -26,7 +26,7 @@ export const book1: BookSummaryT = {
       },
     },
   ],
-}
+};
 
 export const book2: BookSummaryT = {
   id: 818052,
@@ -42,4 +42,4 @@ export const book2: BookSummaryT = {
       },
     },
   ],
-}
+};
