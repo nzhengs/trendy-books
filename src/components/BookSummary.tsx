@@ -8,21 +8,15 @@ export type BookSummaryProps = {
 
 export const BookSummary = ({ book }: BookSummaryProps) => {
   return (
-    <li key={book.id} className="flex justify-between gap-x-6 py-5">
-      <div className="flex min-w-0 gap-x-4">
-        <div className="min-w-0 flex-auto">
-          <h3>{book.title}</h3>
-          <p className="text-sm/6 font-semibold text-gray-900">
-            <BookContributors contributions={book.contributions} />
-          </p>
-        </div>
-      </div>
+    <li key={book.id} className="hover:bg-teal-200 ">
       <Link
         to="/books/$bookId/$slug"
         params={{ bookId: String(book.id), slug: book.slug ?? '' }}
-        className="text-blue-500 hover:underline"
       >
-        Detail
+        <h2 className="text-sm/8 font-bold text-gray-900">{book.title}</h2>
+        <p className="text-sm/6 text-gray-900">
+          <BookContributors contributions={book.contributions} />
+        </p>
       </Link>
     </li>
   );

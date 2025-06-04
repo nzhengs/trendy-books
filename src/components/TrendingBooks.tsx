@@ -20,12 +20,10 @@ export const TrendingBooks = () => {
   }
 
   return (
-    <div className="container bg-gray-100">
-      <ol className="divide-y divide-gray-200">
+      <ol className="divide-y divide-gray-200 ">
         {trendingBooks.map(book => (
           <BookSummary key={book.id} book={book} />
         ))}
       </ol>
-    </div>
   );
 };

@@ -2,9 +2,9 @@ import { Link } from '@tanstack/react-router';
 
 export default function Header() {
   return (
-    <header className="p-2 flex gap-2 bg-white text-black justify-between">
-      <nav className="flex flex-row">
-        <div className="px-2 font-bold">
+    <header className=" w-full border-b">
+      <nav>
+        <div className="px-4 md:px-0 flex items-center justify-start h-12 sticky max-w-5xl mx-auto ">
           <Link to="/">Trending Books</Link>
         </div>
       </nav>
