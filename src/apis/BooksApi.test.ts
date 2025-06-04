@@ -1,6 +1,5 @@
-import { server } from '@/utils/MockServer';
+import { mockQuery } from '@/utils/MockServer';
 import { describe, expect, it } from 'vitest';
-import { graphql, HttpResponse } from 'msw';
 import { useTrendingBooks } from './BooksApi';
 import { bookSummaryDoc, trendingBooksDoc } from './hardcover/queryDocuments';
 import { book1, book2 } from './mocks';
@@ -14,24 +13,13 @@ const dateRange = { from: '2025-01-01', to: '2025-02-01' };
 describe('BooksApi', () => {
   describe('useTrendingBooks', () => {
     it('should fetch trending books', async () => {
-      server.use(
-        graphql.query(trendingBooksDoc, () =>
-          HttpResponse.json({
-            data: {
-              books_trending: {
-                ids: booksIds,
-                error: null,
-              },
-            },
-          }),
-        ),
+      mockQuery(trendingBooksDoc, {
+        data: { books_trending: { ids: booksIds } },
+      });
 
-        graphql.query(bookSummaryDoc, () =>
-          HttpResponse.json({
-            data: { books: [book1, book2] },
-          }),
-        ),
-      );
+      mockQuery(bookSummaryDoc, {
+        data: { books: [book1, book2] },
+      });
 
       const { result } = renderHookWithQuery(() => useTrendingBooks(dateRange));
 
