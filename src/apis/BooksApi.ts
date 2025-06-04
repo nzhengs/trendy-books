@@ -1,6 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { hardcoverClient } from './hardcover/client';
-import { trendingBooksDoc, bookSummaryDoc } from './hardcover/queryDocuments';
+import {
+  trendingBooksDoc,
+  bookSummaryDoc,
+  bookDetailDoc,
+} from './hardcover/queryDocuments';
 
 export type UseTrendingBooksParams = {
   from: string;
@@ -15,9 +19,7 @@ const fetchTrendingBooksIds = (params: UseTrendingBooksParams) =>
 
 const fetchTrendingBooksSummaries = (params: UseTrendingBooksParams) =>
   fetchTrendingBooksIds(params).then(ids =>
-    hardcoverClient
-    .request(bookSummaryDoc, { ids })
-    .then(data => data.books),
+    hardcoverClient.request(bookSummaryDoc, { ids }).then(data => data.books),
   );
 
 export const useTrendingBooks = (params: UseTrendingBooksParams) =>
@@ -26,6 +28,19 @@ export const useTrendingBooks = (params: UseTrendingBooksParams) =>
     queryFn: () => fetchTrendingBooksSummaries(params),
     staleTime: 1 * 60 * 60 * 1000, // 1 hour
   });
+
+const fetchBookDetail = (id: number) =>
+  hardcoverClient.request(bookDetailDoc, { id }).then(data => data.books_by_pk);
+
+export type BookDetailT = Awaited<ReturnType<typeof fetchBookDetail>>;
+
+export const useBookDetail = (id: number) => {
+  return useQuery({
+    queryKey: ['bookDetail', id],
+    queryFn: () => fetchBookDetail(id),
+    staleTime: 1 * 60 * 60 * 1000, // 1 hour
+  });
+};
 
 type BookSummaries = Awaited<ReturnType<typeof fetchTrendingBooksSummaries>>;
 export type BookSummaryT = BookSummaries[number];

@@ -1,26 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { useQuery } from '@tanstack/react-query';
+import { BookDetail } from '@/components/BookDetail';
 
 export const Route = createFileRoute('/books/$bookId/$slug')({
-  component: TanStackQueryDemo,
+  component: BookDetailRouteComponent,
 });
 
-function TanStackQueryDemo() {
-  const { data } = useQuery({
-    queryKey: ['people'],
-    queryFn: () =>
-      Promise.resolve([{ name: 'John Doe' }, { name: 'Jane Doe' }]),
-    initialData: [],
-  });
+function BookDetailRouteComponent() {
+  const { bookId } = Route.useParams();
 
-  return (
-    <div className="p-4">
-      <h1 className="text-2xl mb-4">People list</h1>
-      <ul>
-        {data.map(person => (
-          <li key={person.name}>{person.name}</li>
-        ))}
-      </ul>
-    </div>
-  );
+  return <BookDetail id={Number(bookId)} />;
 }

@@ -1,6 +1,5 @@
 import { graphql } from './graphql';
 
-
 export const trendingBooksDoc = graphql(`
   query GetTrendingBooks($from: date!, $to: date!) {
     books_trending(from: $from, to: $to, offset: 10, limit: 10) {
@@ -25,6 +24,32 @@ export const bookSummaryDoc = graphql(`
       }
       rating
       slug
+    }
+  }
+`);
+
+export const bookDetailDoc = graphql(`
+  query GetBookDetail($id: Int!) {
+    books_by_pk(id: $id) {
+      id
+      title
+      subtitle
+      description
+      slug
+      rating
+      contributions {
+        author {
+          id
+          name
+        }
+      }
+      user_books(
+        limit: 10
+        where: { review_raw: { _is_null: false }, has_review: { _eq: true } }
+      ) {
+        review_raw
+        reviewed_at
+      }
     }
   }
 `);

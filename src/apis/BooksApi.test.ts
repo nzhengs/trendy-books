@@ -17,10 +17,12 @@ describe('BooksApi', () => {
       server.use(
         graphql.query(trendingBooksDoc, () =>
           HttpResponse.json({
-            data: { books_trending: {
-              ids: booksIds,
-              error: null
-            } },
+            data: {
+              books_trending: {
+                ids: booksIds,
+                error: null,
+              },
+            },
           }),
         ),
 
