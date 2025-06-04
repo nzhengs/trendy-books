@@ -45,7 +45,12 @@ export const bookDetailDoc = graphql(`
       }
       user_books(
         limit: 10
-        where: { review_raw: { _is_null: false }, has_review: { _eq: true } }
+        where: {
+          review_raw: { _is_null: false }
+          has_review: { _eq: true }
+          reviewed_at: { _is_null: false }
+        }
+        order_by: { reviewed_at: desc }
       ) {
         review_raw
         reviewed_at
