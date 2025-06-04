@@ -1,7 +1,8 @@
 import { server } from '@/utils/MockServer';
 import { describe, expect, it } from 'vitest';
 import { graphql, HttpResponse } from 'msw';
-import { bookSummaryDoc, trendingBooksDoc, useTrendingBooks } from './BooksApi';
+import { useTrendingBooks } from './BooksApi';
+import { bookSummaryDoc, trendingBooksDoc } from './hardcover/queryDocuments';
 import { book1, book2 } from './mocks';
 import { renderHookWithQuery } from '@/utils/TestUtils';
 import { waitFor } from '@testing-library/dom';
@@ -16,13 +17,16 @@ describe('BooksApi', () => {
       server.use(
         graphql.query(trendingBooksDoc, () =>
           HttpResponse.json({
-            data: { books_trending: { ids: booksIds } },
+            data: { books_trending: {
+              ids: booksIds,
+              error: null
+            } },
           }),
         ),
 
         graphql.query(bookSummaryDoc, () =>
           HttpResponse.json({
-            data: { list_books: [{ book: book1 }, { book: book2 }] },
+            data: { books: [book1, book2] },
           }),
         ),
       );

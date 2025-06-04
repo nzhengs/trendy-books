@@ -1,34 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { graphql } from './hardcover/graphql';
 import { hardcoverClient } from './hardcover/client';
-
-export const trendingBooksDoc = graphql(`
-  query GetTrendingBooks($from: date!, $to: date!) {
-    books_trending(from: $from, to: $to, offset: 10, limit: 10) {
-      ids
-      error
-    }
-  }
-`);
-
-export const bookSummaryDoc = graphql(`
-  query GetBookSummary($ids: [Int!]!) {
-    books(where: { id: { _in: $ids } }) {
-      id
-      title
-      subtitle
-      slug
-      contributions {
-        author {
-          id
-          name
-        }
-      }
-      rating
-      slug
-    }
-  }
-`);
+import { trendingBooksDoc, bookSummaryDoc } from './hardcover/queryDocuments';
 
 export type UseTrendingBooksParams = {
   from: string;
