@@ -11,7 +11,6 @@ describe('BookAuthors', () => {
 
     render(<BookAuthors authors={contributions} />);
 
-    expect(screen.getByText('Author:')).toBeVisible();
     expect(screen.getByText(author1.name)).toBeVisible();
     expect(screen.getByText(author2.name)).toBeVisible();
   });

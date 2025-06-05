@@ -14,7 +14,7 @@ export const BookSummary = ({ book }: BookSummaryProps) => {
         params={{ bookId: String(book.id), slug: book.slug ?? '' }}
       >
         <h2 className="text-sm/8 font-bold text-gray-900">{book.title}</h2>
-        <p className="text-sm/6 text-gray-900">
+        <p className="text-sm/6 text-gray-900 ">
           <BookAuthors authors={book.authors} />
         </p>
       </Link>

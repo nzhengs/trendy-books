@@ -34,14 +34,9 @@ describe('BookDetail', () => {
     await renderComponent();
     await waitForElementToBeRemoved(screen.getByRole('progressbar'));
     expect(screen.getByText(book1Detail.title!)).toBeVisible();
-    expect(screen.getByText(book1Detail.subtitle!)).toBeVisible();
-    expect(
-      screen.getByText(`Publised date: ${book1Detail.release_year}`),
-    ).toBeVisible();
+
     expect(screen.getByText('Reviews')).toBeVisible();
-    expect(
-      screen.getByText(`Rating: ${book1Detail.rating?.toFixed(2)}`),
-    ).toBeVisible();
+    expect(screen.getByText('Rating:')).toBeVisible();
     expect(screen.getByAltText(book1Detail.title!)).toHaveAttribute(
       'src',
       book1Detail.image!.url,

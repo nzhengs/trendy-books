@@ -9,7 +9,6 @@ export const BookAuthors = ({ authors }: BookAuthorsProps) => {
 
   return (
     <>
-      Author:{' '}
       {author.map(a => (
         <span key={a?.id}>{a?.name}</span>
       ))}
