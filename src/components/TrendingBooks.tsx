@@ -13,7 +13,7 @@ export const TrendingBooks = ({ duration }: TrendingBooksProps) => {
 
   const {
     data: trendingBooks,
-    isPending,
+    isPending, 
     isError,
   } = useTrendingBooks(dateRange);
 

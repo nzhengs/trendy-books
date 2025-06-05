@@ -7,7 +7,7 @@ export type ReviewProps = {
 export const Review = ({ review }: ReviewProps) => {
   const reviewedDate = new Date(review.reviewed_at!).toLocaleDateString();
   return (
-    <div className="py-3">
+    <li className="py-3">
       <div>
         <span className="font-medium">{review.user.name}</span>
         <span> reviewed on </span>
@@ -15,6 +15,6 @@ export const Review = ({ review }: ReviewProps) => {
         {review.rating && <Stars number={review.rating} />}
       </div>
       <p className="py-2">{review.review_raw}</p>
-    </div>
+    </li>
   );
 };
