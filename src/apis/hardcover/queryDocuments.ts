@@ -9,7 +9,7 @@ export const trendingBooksDoc = graphql(`
   }
 `);
 
-export const bookSummaryDoc = graphql(`
+export const booksSummariesDoc = graphql(`
   query GetBookSummary($ids: [Int!]!) {
     books(where: { id: { _in: $ids } }) {
       id

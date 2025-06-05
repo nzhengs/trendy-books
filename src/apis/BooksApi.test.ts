@@ -1,7 +1,7 @@
 import { mockQuery } from '@/utils/MockServer';
 import { describe, expect, it } from 'vitest';
 import { useTrendingBooks } from './BooksApi';
-import { bookSummaryDoc, trendingBooksDoc } from './hardcover/queryDocuments';
+import { booksSummariesDoc, trendingBooksDoc } from './hardcover/queryDocuments';
 import {
   book1,
   book2,
@@ -19,7 +19,7 @@ describe('BooksApi', () => {
     it('should fetch trending books', async () => {
       mockQuery(trendingBooksDoc, trendingBooksResponse);
 
-      mockQuery(bookSummaryDoc, booksSummariesResponse);
+      mockQuery(booksSummariesDoc, booksSummariesResponse);
 
       const { result } = renderHookWithQuery(() => useTrendingBooks(dateRange));
 

@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { hardcoverClient } from './hardcover/client';
 import {
   trendingBooksDoc,
-  bookSummaryDoc,
+  booksSummariesDoc,
   bookDetailDoc,
 } from './hardcover/queryDocuments';
 
@@ -19,7 +19,7 @@ const fetchTrendingBooksIds = (params: UseTrendingBooksParams) =>
 
 const fetchTrendingBooksSummaries = (params: UseTrendingBooksParams) =>
   fetchTrendingBooksIds(params).then(ids =>
-    hardcoverClient.request(bookSummaryDoc, { ids }).then(data => data.books),
+    hardcoverClient.request(booksSummariesDoc, { ids }).then(data => data.books),
   );
 
 export const useTrendingBooks = (params: UseTrendingBooksParams) =>
