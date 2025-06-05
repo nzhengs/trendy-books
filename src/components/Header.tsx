@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router';
 
-export default function Header() {
+export const Header = () => {
   return (
     <header className=" w-full border-b">
       <nav>
@@ -10,4 +10,4 @@ export default function Header() {
       </nav>
     </header>
   );
-}
+};
