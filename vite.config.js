@@ -15,6 +15,19 @@ export default defineConfig({
     setupFiles: ['./src/setupTests.ts'],
     globals: true,
     environment: 'jsdom',
+    coverage: {
+      enabled: true,
+      reporter: ['text', 'html'],
+      include: ['src/**/*.{ts,tsx}'],
+      skipFull: true,
+      exclude: [
+        'src/main.tsx',
+        'src/reportWebVitals.ts',
+        '**/routeTree.gen.ts',
+        '**/graphql-env.d.ts',
+        'src/routes/**',
+      ],
+    },
   },
   resolve: {
     alias: {
