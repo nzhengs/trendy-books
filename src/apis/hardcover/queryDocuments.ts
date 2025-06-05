@@ -16,7 +16,7 @@ export const bookSummaryDoc = graphql(`
       title
       subtitle
       slug
-      contributions {
+      authors: contributions {
         author {
           id
           name
@@ -37,7 +37,7 @@ export const bookDetailDoc = graphql(`
       description
       slug
       rating
-      contributions {
+      authors: contributions {
         author {
           id
           name

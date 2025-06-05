@@ -44,5 +44,5 @@ export const useBookDetail = (id: number) => {
 
 type BookSummaries = Awaited<ReturnType<typeof fetchTrendingBooksSummaries>>;
 export type BookSummaryT = BookSummaries[number];
-export type BookContributions = BookSummaryT['contributions'];
-export type BookAuthor = BookContributions[number]['author'];
+export type BookAuthorsT = BookSummaryT['authors'];
+export type BookAuthor = BookAuthorsT[number]['author'];

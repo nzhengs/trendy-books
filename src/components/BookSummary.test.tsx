@@ -9,7 +9,7 @@ const bookSummary: BookSummaryT = {
   id: 2,
   subtitle: 'I am subtitle',
   slug: 'book-title-slug',
-  contributions: [],
+  authors: [],
   rating: undefined,
 };
 

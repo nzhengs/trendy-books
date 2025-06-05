@@ -6,7 +6,7 @@ export const book1: BookSummaryT = {
   subtitle: null,
   slug: 'machine-that-changed-the-world-the-story-of-lean-production',
   rating: 4,
-  contributions: [
+  authors: [
     {
       author: {
         id: 285397,
@@ -34,7 +34,7 @@ export const book2: BookSummaryT = {
   subtitle: 'The Chronicles of Urn',
   slug: 'kings-bride',
   rating: 4.7,
-  contributions: [
+  authors: [
     {
       author: {
         id: 245534,
