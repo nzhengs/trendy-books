@@ -1,13 +1,17 @@
+import { useState } from 'react';
+import type { DurationOption } from './durationOptions';
+import { DurationSelector } from './DurationSelector';
 import { TrendingBooks } from './TrendingBooks';
 
 export const Books = () => {
+  const [duration, setDuration] = useState<DurationOption>('lastWeek');
   return (
     <>
-      <h1 className="text-2xl font-bold text-gray-900 mb-5">
-        Trending Books
-      </h1>
-      <p>Duration Selector</p>
-      <TrendingBooks />
+      <h1 className="text-2xl font-bold text-gray-900 mb-5">Trending Books</h1>
+      <div className="py-2">
+      <DurationSelector value={duration} onChange={setDuration} />
+      </div>
+      <TrendingBooks duration={duration}/>
     </>
   );
 };

@@ -1,5 +1,8 @@
 import { screen, waitForElementToBeRemoved } from '@testing-library/react';
-import { TrendingBooks } from '@/components/TrendingBooks.tsx';
+import {
+  TrendingBooks,
+  type TrendingBooksProps,
+} from '@/components/TrendingBooks.tsx';
 import { renderWithProviders } from '@/utils/TestUtils.tsx';
 import {
   book1,
@@ -13,7 +16,8 @@ import {
 } from '@/apis/hardcover/queryDocuments.ts';
 import { mockQuery } from '@/utils/MockServer.ts';
 
-const renderComponent = () => renderWithProviders(<TrendingBooks />);
+const renderComponent = (props: TrendingBooksProps) =>
+  renderWithProviders(<TrendingBooks {...props} />);
 
 describe('TrendingBooks', () => {
   beforeEach(() => {
@@ -22,19 +26,19 @@ describe('TrendingBooks', () => {
   });
 
   it('should show progressbar', async () => {
-    await renderComponent();
+    await renderComponent({duration:'lastWeek'});
     expect(screen.getByRole('progressbar')).toBeVisible();
   });
 
   it('should show error', async () => {
     mockQuery(trendingBooksDoc, trendingBooksResponse, { status: 500 });
-    await renderComponent();
+    await renderComponent({duration:'lastWeek'});
     await waitForElementToBeRemoved(screen.getByRole('progressbar'));
     expect(screen.getByText('Error loading trending books')).toBeVisible();
   });
 
-  it('should should show books', async () => {
-    await renderComponent();
+  it('should show books', async () => {
+    await renderComponent({duration:'lastWeek'});
     await waitForElementToBeRemoved(screen.getByRole('progressbar'));
     expect(screen.getByText(book1.title!)).toBeVisible();
     expect(screen.getByText(book2.title!)).toBeVisible();

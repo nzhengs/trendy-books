@@ -1,10 +1,16 @@
 import { useTrendingBooks } from '@/apis/BooksApi.ts';
 import { BookSummary } from './BookSummary';
 import { getDateRangeUpToTodayWithDiff } from '@/utils/DateUtils';
+import { durationOptions, type DurationOption } from './durationOptions';
 
-const dateRange = getDateRangeUpToTodayWithDiff(1, 'month');
+export type TrendingBooksProps = {
+  duration: DurationOption;
+};
 
-export const TrendingBooks = () => {
+export const TrendingBooks = ({ duration }: TrendingBooksProps) => {
+  const { diff, unit } = durationOptions.find(o => o.key === duration)!;
+  const dateRange = getDateRangeUpToTodayWithDiff(diff, unit);
+
   const {
     data: trendingBooks,
     isPending,

@@ -7,15 +7,20 @@ const toApiDate = (date: Date) => date.toISOString().slice(0, 10);
 /**
  * Gets a date range from a specified number of months ago up to today.
  * @param diff
- * @param _unit
+ * @param unit
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const getDateRangeUpToTodayWithDiff = (diff: number, _unit: 'month') => {
-  const today = new Date();
+export const getDateRangeUpToTodayWithDiff = (
+  diff: number,
+  unit: 'day' | 'month' | 'year',
+) => {
+  const toDate = new Date();
   const fromDate = new Date(
-    today.getFullYear(),
-    today.getMonth() - diff,
-    today.getDate(),
+    toDate.getFullYear() - (unit === 'year' ? diff : 0),
+    toDate.getMonth() - (unit === 'month' ? diff : 0),
+    toDate.getDate() - (unit === 'day' ? diff : 0),
   );
-  return { from: toApiDate(fromDate), to: toApiDate(today) };
+  return {
+    from: toApiDate(fromDate),
+    to: toApiDate(toDate),
+  };
 };
