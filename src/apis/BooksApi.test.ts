@@ -1,7 +1,10 @@
 import { mockQuery } from '@/utils/MockServer';
 import { describe, expect, it } from 'vitest';
 import { useTrendingBooks } from './BooksApi';
-import { booksSummariesDoc, trendingBooksDoc } from './hardcover/queryDocuments';
+import {
+  booksSummariesDoc,
+  trendingBooksDoc,
+} from './hardcover/queryDocuments';
 import {
   book1,
   book2,
@@ -29,6 +32,13 @@ describe('BooksApi', () => {
 
       await waitFor(() => expect(result.current.isSuccess).toBe(true));
       expect(result.current.data).toEqual([book1, book2, book3]);
+    });
+
+    it('should not fetch books summaries if trending is empty ', async () => {
+      mockQuery(trendingBooksDoc, { data: { books_trending: { ids: null } } });
+      const dateRange = { from: '2025-01-01', to: '2025-02-01' };
+      const { result } = renderHookWithQuery(() => useTrendingBooks(dateRange));
+      await waitFor(() => expect(result.current.data).toEqual([]));
     });
   });
 });

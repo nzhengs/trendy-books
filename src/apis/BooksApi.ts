@@ -14,14 +14,16 @@ export type UseTrendingBooksParams = {
 const fetchTrendingBooksIds = (params: UseTrendingBooksParams) =>
   hardcoverClient
     .request(trendingBooksDoc, params)
-    .then(data => data.books_trending?.ids ?? [])
-    .then(ids => ids.filter(id => id !== null));
+    .then(data => data.books_trending?.ids)
+    .then(ids => ids?.filter(id => id !== null));
 
 const fetchTrendingBooksSummaries = (params: UseTrendingBooksParams) =>
   fetchTrendingBooksIds(params).then(ids =>
-    hardcoverClient
-      .request(booksSummariesDoc, { ids })
-      .then(data => data.books),
+    ids?.length
+      ? hardcoverClient
+          .request(booksSummariesDoc, { ids })
+          .then(data => data.books)
+      : [],
   );
 
 export const useTrendingBooks = (params: UseTrendingBooksParams) =>
