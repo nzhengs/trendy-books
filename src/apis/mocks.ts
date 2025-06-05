@@ -52,6 +52,10 @@ export const book1Detail: BookDetailT = {
   id: 427971,
   title: 'All Systems Red',
   subtitle: 'The Murderbot Diaries',
+  image: {
+    url: 'https://assets.hardcover.app/edition/31464805/75e1c503a87dc7b039ca67ed843a25af3e616ae4.jpeg',
+  },
+  release_year:2021,
   description:
     "In a corporate-dominated spacefaring future, planetary missions must be approved and supplied by the Company. Exploratory teams are accompanied by Company-supplied security androids, for their own safety.\n\nBut in a society where contracts are awarded to the lowest bidder, safety isn't a primary concern.\n\nOn a distant planet, a team of scientists are conducting surface tests, shadowed by their Company-supplied 'droid -- a self-aware SecUnit that has hacked its own governor module, and refers to itself (though never out loud) as \"Murderbot.\" Scornful of humans, all it really wants is to be left alone long enough to figure out who it is.\n\nBut when a neighboring mission goes dark, it's up to the scientists and their Murderbot to get to the truth.",
   slug: 'all-systems-red',

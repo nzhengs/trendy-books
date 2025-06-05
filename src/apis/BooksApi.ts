@@ -19,7 +19,9 @@ const fetchTrendingBooksIds = (params: UseTrendingBooksParams) =>
 
 const fetchTrendingBooksSummaries = (params: UseTrendingBooksParams) =>
   fetchTrendingBooksIds(params).then(ids =>
-    hardcoverClient.request(booksSummariesDoc, { ids }).then(data => data.books),
+    hardcoverClient
+      .request(booksSummariesDoc, { ids })
+      .then(data => data.books),
   );
 
 export const useTrendingBooks = (params: UseTrendingBooksParams) =>
@@ -31,8 +33,6 @@ export const useTrendingBooks = (params: UseTrendingBooksParams) =>
 
 const fetchBookDetail = (id: number) =>
   hardcoverClient.request(bookDetailDoc, { id }).then(data => data.books_by_pk);
-
-export type BookDetailT = Awaited<ReturnType<typeof fetchBookDetail>>;
 
 export const useBookDetail = (id: number) => {
   return useQuery({
@@ -46,3 +46,7 @@ type BookSummaries = Awaited<ReturnType<typeof fetchTrendingBooksSummaries>>;
 export type BookSummaryT = BookSummaries[number];
 export type BookAuthorsT = BookSummaryT['authors'];
 export type BookAuthor = BookAuthorsT[number]['author'];
+
+export type BookDetailT = NonNullable<
+  Awaited<ReturnType<typeof fetchBookDetail>>
+>;

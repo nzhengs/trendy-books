@@ -37,6 +37,10 @@ export const bookDetailDoc = graphql(`
       description
       slug
       rating
+      image {
+        url
+      }
+      release_year,
       authors: contributions {
         author {
           id
