@@ -1,15 +1,15 @@
 import { useTrendingBooks } from '@/apis/BooksApi.ts';
 import { BookSummary } from './BookSummary';
+import { getDateRangeUpToTodayWithDiff } from '@/utils/DateUtils';
+
+const dateRange = getDateRangeUpToTodayWithDiff(1, 'month');
 
 export const TrendingBooks = () => {
   const {
     data: trendingBooks,
     isPending,
     isError,
-  } = useTrendingBooks({
-    from: '2025-01-24',
-    to: '2025-07-01',
-  });
+  } = useTrendingBooks(dateRange);
 
   if (isPending) {
     return <div>Loading...</div>;
@@ -20,10 +20,10 @@ export const TrendingBooks = () => {
   }
 
   return (
-      <ol className="divide-y divide-gray-200 ">
-        {trendingBooks.map(book => (
-          <BookSummary key={book.id} book={book} />
-        ))}
-      </ol>
+    <ol className="divide-y divide-gray-200 ">
+      {trendingBooks.map(book => (
+        <BookSummary key={book.id} book={book} />
+      ))}
+    </ol>
   );
 };
