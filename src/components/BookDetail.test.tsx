@@ -39,6 +39,9 @@ describe('BookDetail', () => {
       screen.getByText(`Publised date: ${book1Detail.release_year}`),
     ).toBeVisible();
     expect(screen.getByText('Reviews')).toBeVisible();
+    expect(
+      screen.getByText(`Rating: ${book1Detail.rating?.toFixed(2)}`),
+    ).toBeVisible();
     expect(screen.getByAltText(book1Detail.title!)).toHaveAttribute(
       'src',
       book1Detail.image!.url,

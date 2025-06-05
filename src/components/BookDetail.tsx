@@ -27,6 +27,7 @@ export const BookDetail = ({ id }: BookDetailProps) => {
       <h2 className="text-2xl text-center">{book.subtitle}</h2>
       <BookAuthors authors={book.authors} />
       <p>Publised date: {book.release_year}</p>
+      <p>Rating: {book.rating?.toFixed(2)}</p>
 
       {book.image?.url && (
         <img
@@ -40,7 +41,10 @@ export const BookDetail = ({ id }: BookDetailProps) => {
 
       <h3 className="py-3">Reviews</h3>
       {book.reviews.map(r => (
-        <p className="py-2">{r.review_raw}</p>
+        <>
+          <p className="py-2">{r.review_raw}</p>
+          <p>Rating: {r.rating}</p>
+        </>
       ))}
     </section>
   );
