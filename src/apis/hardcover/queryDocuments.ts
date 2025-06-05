@@ -2,7 +2,7 @@ import { graphql } from './graphql';
 
 export const trendingBooksDoc = graphql(`
   query GetTrendingBooks($from: date!, $to: date!) {
-    books_trending(from: $from, to: $to, offset: 10, limit: 10) {
+    books_trending(from: $from, to: $to, offset: 0, limit: 15) {
       ids
       error
     }
