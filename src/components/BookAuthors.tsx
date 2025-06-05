@@ -10,7 +10,7 @@ export const BookAuthors = ({ authors }: BookAuthorsProps) => {
   return (
     <>
       {author.map(a => (
-        <span key={a?.id}>{a?.name}</span>
+        <span key={a?.id} className='px-1'>{a?.name}</span>
       ))}
     </>
   );

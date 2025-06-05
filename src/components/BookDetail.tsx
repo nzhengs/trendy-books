@@ -30,18 +30,20 @@ export const BookDetail = ({ id }: BookDetailProps) => {
       <h1 className="text-5xl font-bold text-gray-900 text-center">
         {book.title}
       </h1>
-
-      <h2 className="text-2xl font-medium">
+      <h2 className="text-2xl font-medium text-center p-3">
         <BookAuthors authors={book.authors} />
       </h2>
-      {book.rating && (
-        <Rating
-          rating={book.rating}
-          reviewsCount={book.reviews_count}
-          reviewsLink={`#${reviewsId}`}
-        />
-      )}
-      <p>Published date: {book.release_year}</p>
+
+      <span className="flex justify-center items-center">
+        <p>Published date: {book.release_year}</p>
+        {book.rating && (
+          <Rating
+            rating={book.rating}
+            reviewsCount={book.reviews_count}
+            reviewsLink={`#${reviewsId}`}
+          />
+        )}
+      </span>
 
       {book.image?.url && (
         <img
