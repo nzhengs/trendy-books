@@ -5,7 +5,7 @@ export default function Header() {
     <header className=" w-full border-b">
       <nav>
         <div className="px-4 md:px-0 flex items-center justify-start h-12 sticky max-w-5xl mx-auto ">
-          <Link to="/">Trending Books</Link>
+          <Link to="/">Trendy Books</Link>
         </div>
       </nav>
     </header>
