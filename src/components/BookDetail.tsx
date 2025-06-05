@@ -1,5 +1,7 @@
 import { useBookDetail } from '@/apis/BooksApi.ts';
 import { BookAuthors } from './BookAuthors';
+import { Rating } from './Rating';
+import { Reviews } from './Reviews';
 
 export type BookDetailProps = {
   id: number;
@@ -21,6 +23,8 @@ export const BookDetail = ({ id }: BookDetailProps) => {
     return <div>Unable to find the book</div>;
   }
 
+  const reviewsId = 'reviews';
+
   return (
     <section>
       <h1 className="text-5xl font-bold text-gray-900 text-center">
@@ -30,9 +34,14 @@ export const BookDetail = ({ id }: BookDetailProps) => {
       <h2 className="text-2xl font-medium">
         <BookAuthors authors={book.authors} />
       </h2>
-      <p>
-        <span className="font-bold">Rating:</span> {book.rating?.toFixed(2)}
-      </p>
+      {book.rating && (
+        <Rating
+          rating={book.rating}
+          reviewsCount={book.reviews_count}
+          reviewsLink={`#${reviewsId}`}
+        />
+      )}
+      <p>Published date: {book.release_year}</p>
 
       {book.image?.url && (
         <img
@@ -44,13 +53,7 @@ export const BookDetail = ({ id }: BookDetailProps) => {
 
       <p>{book.description}</p>
 
-      <h2 className="py-3 text-2xl ">Reviews</h2>
-      {book.reviews.map(r => (
-        <>
-          <p className="py-2">{r.review_raw}</p>
-          <p>Rating: {r.rating}</p>
-        </>
-      ))}
+      <Reviews id={reviewsId} reviews={book.reviews} />
     </section>
   );
 };

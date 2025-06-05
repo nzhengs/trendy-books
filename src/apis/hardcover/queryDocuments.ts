@@ -37,10 +37,11 @@ export const bookDetailDoc = graphql(`
       description
       slug
       rating
+      reviews_count
       image {
         url
       }
-      release_year,
+      release_year
       authors: contributions {
         author {
           id
@@ -48,7 +49,7 @@ export const bookDetailDoc = graphql(`
         }
       }
       reviews: user_books(
-        limit: 10
+        limit: 5
         where: {
           review_raw: { _is_null: false }
           has_review: { _eq: true }
@@ -59,6 +60,10 @@ export const bookDetailDoc = graphql(`
         rating
         review_raw
         reviewed_at
+        user {
+          id
+          name
+        }
       }
     }
   }

@@ -35,8 +35,6 @@ describe('BookDetail', () => {
     await waitForElementToBeRemoved(screen.getByRole('progressbar'));
     expect(screen.getByText(book1Detail.title!)).toBeVisible();
 
-    expect(screen.getByText('Reviews')).toBeVisible();
-    expect(screen.getByText('Rating:')).toBeVisible();
     expect(screen.getByAltText(book1Detail.title!)).toHaveAttribute(
       'src',
       book1Detail.image!.url,

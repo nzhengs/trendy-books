@@ -7,6 +7,7 @@ export const graphql = initGraphQLTada<{
   introspection: introspection;
   scalars: {
     numeric: number;
+    timestamp: string;
   };
 }>();
 

@@ -52,3 +52,6 @@ export type BookAuthor = BookAuthorsT[number]['author'];
 export type BookDetailT = NonNullable<
   Awaited<ReturnType<typeof fetchBookDetail>>
 >;
+
+export type BookReviewsT = BookDetailT['reviews'];
+export type BookReviewT = BookDetailT['reviews'][number];
