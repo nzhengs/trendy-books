@@ -12,7 +12,8 @@ export const TrendingBooks = () => {
   } = useTrendingBooks(dateRange);
 
   if (isPending) {
-    return <div>Loading...</div>;
+    // TODO: https://github.com/tailwindlabs/tailwindcss/issues/3357
+    return <progress aria-label="Loading..."></progress>;
   }
 
   if (isError) {
