@@ -1,11 +1,17 @@
 import { setupServer } from 'msw/node';
-import type { DocumentNode } from 'graphql/language';
 import { graphql, HttpResponse, type JsonBodyType } from 'msw';
+import type { DocumentNode } from 'graphql/language';
 
 export const server = setupServer();
 
 export const mockQuery = (
   queryDoc: DocumentNode,
   response: JsonBodyType,
+  responseInit: ResponseInit = { status: 200 },
 ) =>
-  server.use(graphql.query(queryDoc, () => HttpResponse.json(response as any)));
+  server.use(
+    graphql.query(
+      queryDoc,
+      () => HttpResponse.json(response as any, responseInit), // as any because GraphQLResponseBody is not exposed from msw
+    ),
+  );
