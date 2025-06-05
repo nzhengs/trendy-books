@@ -12,6 +12,7 @@ export const mockQuery = (
   server.use(
     graphql.query(
       queryDoc,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       () => HttpResponse.json(response as any, responseInit), // as any because GraphQLResponseBody is not exposed from msw
     ),
   );
