@@ -43,7 +43,7 @@ export const bookDetailDoc = graphql(`
           name
         }
       }
-      user_books(
+      reviews: user_books(
         limit: 10
         where: {
           review_raw: { _is_null: false }
@@ -52,6 +52,7 @@ export const bookDetailDoc = graphql(`
         }
         order_by: { reviewed_at: desc }
       ) {
+        rating
         review_raw
         reviewed_at
       }
