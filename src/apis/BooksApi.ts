@@ -30,7 +30,7 @@ export const useTrendingBooks = (params: UseTrendingBooksParams) =>
   useQuery({
     queryKey: ['trendingBooks', params],
     queryFn: () => fetchTrendingBooksSummaries(params),
-    staleTime: 1 * 60 * 60 * 1000, // 1 hour
+    staleTime: hoursInMillis(1),
   });
 
 const fetchBookDetail = (id: number) =>
@@ -40,9 +40,11 @@ export const useBookDetail = (id: number) => {
   return useQuery({
     queryKey: ['bookDetail', id],
     queryFn: () => fetchBookDetail(id),
-    staleTime: 1 * 60 * 60 * 1000, // 1 hour
+    staleTime: hoursInMillis(1),
   });
 };
+
+const hoursInMillis = (n: number) => n * 60 * 60 * 1000;
 
 type BookSummaries = Awaited<ReturnType<typeof fetchTrendingBooksSummaries>>;
 export type BookSummaryT = BookSummaries[number];
