@@ -1,4 +1,5 @@
 import { Star } from '@/components/Star.tsx';
+import { DotSeparator } from './DotSeparator';
 
 export type RatingProps = {
   rating: number;
@@ -9,15 +10,14 @@ export type RatingProps = {
 export const Rating = ({ rating, reviewsCount, reviewsLink }: RatingProps) => (
   <div className="flex items-center">
     <span className="flex items-center">
-      <span className="  w-1 h-1 mx-3 bg-gray-500 rounded-full"></span>
-
+      <DotSeparator />
       <Star />
       <p className="ms-2 text-sm font-bold text-gray-900">
         {rating.toFixed(2)}
       </p>
     </span>
     <span className="flex items-center">
-      <span className="  w-1 h-1 mx-3 bg-gray-500 rounded-full"></span>
+      <DotSeparator />
       <a
         href={reviewsLink}
         className="text-sm font-medium text-gray-900 underline hover:no-underline"

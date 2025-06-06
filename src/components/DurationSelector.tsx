@@ -9,8 +9,7 @@ export const DurationSelector = ({
   value,
   onChange,
 }: DurationSelectorProps) => (
-  <fieldset className="flex flex-col md:flex-row">
-    <legend className="font-bold text-xl ">Choose duration</legend>
+  <div className="flex flex-col md:flex-row border-gray-400 border-b">
     {durationOptions.map(option => (
       <div key={option.key} className="mx-2 cursor-pointer inline">
         <input
@@ -26,5 +25,5 @@ export const DurationSelector = ({
         </label>
       </div>
     ))}
-  </fieldset>
+  </div>
 );

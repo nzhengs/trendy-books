@@ -2,6 +2,7 @@ import { useBookDetail } from '@/apis/BooksApi.ts';
 import { BookAuthors } from './BookAuthors';
 import { Rating } from './Rating';
 import { Reviews } from './Reviews';
+import { DotSeparator } from './DotSeparator';
 
 export type BookDetailProps = {
   id: number;
@@ -33,9 +34,9 @@ export const BookDetail = ({ id }: BookDetailProps) => {
       <h2 className="text-2xl font-medium text-center p-3">
         <BookAuthors authors={book.authors} />
       </h2>
-
       <span className="flex justify-center items-center">
-        <p>Published date: {book.release_year}</p>
+        <DotSeparator />
+        <p>{book.release_year}</p>
         {book.rating && (
           <Rating
             rating={book.rating}
