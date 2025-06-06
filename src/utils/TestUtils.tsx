@@ -1,5 +1,11 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { render, renderHook, screen } from '@testing-library/react';
+import {
+  render,
+  renderHook,
+  screen,
+  type BoundFunction,
+  type GetByText,
+} from '@testing-library/react';
 import type { PropsWithChildren, ReactNode } from 'react';
 import {
   createRootRoute,
@@ -8,6 +14,10 @@ import {
   Outlet,
   RouterProvider,
 } from '@tanstack/react-router';
+
+export const expectTextToBeVisible = <T extends HTMLElement = HTMLElement>(
+  ...args: Parameters<BoundFunction<GetByText<T>>>
+) => expect(screen.getByText<T>(...args)).toBeVisible();
 
 const createQueryClient = () =>
   new QueryClient({ defaultOptions: { queries: { retry: false } } });

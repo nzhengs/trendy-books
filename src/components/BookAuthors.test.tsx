@@ -1,7 +1,8 @@
 import type { BookAuthor } from '@/apis/BooksApi';
 import { BookAuthors } from './BookAuthors';
-import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { render } from '@testing-library/react';
+import { describe, it } from 'vitest';
+import { expectTextToBeVisible } from '@/utils/TestUtils';
 
 describe('BookAuthors', () => {
   it('should render authors correctly', () => {
@@ -11,7 +12,7 @@ describe('BookAuthors', () => {
 
     render(<BookAuthors authors={contributions} />);
 
-    expect(screen.getByText(author1.name)).toBeVisible();
-    expect(screen.getByText(author2.name)).toBeVisible();
+    expectTextToBeVisible(author1.name);
+    expectTextToBeVisible(author2.name);
   });
 });

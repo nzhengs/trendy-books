@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { BookSummary } from './BookSummary';
 import { screen } from '@testing-library/react';
-import { renderWithProviders } from '@/utils/TestUtils';
+import { expectTextToBeVisible, renderWithProviders } from '@/utils/TestUtils';
 import { book1 } from '@/apis/mocks';
 
 describe('BookSummary', async () => {
@@ -10,7 +10,7 @@ describe('BookSummary', async () => {
   );
 
   it('should render book title correctly', () => {
-    expect(screen.getByText(book1.title!)).toBeVisible();
+    expectTextToBeVisible(book1.title!);
   });
 
   it('should render link ', () => {

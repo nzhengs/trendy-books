@@ -3,7 +3,10 @@ import {
   TrendingBooks,
   type TrendingBooksProps,
 } from '@/components/TrendingBooks.tsx';
-import { renderWithProviders } from '@/utils/TestUtils.tsx';
+import {
+  expectTextToBeVisible,
+  renderWithProviders,
+} from '@/utils/TestUtils.tsx';
 import {
   book1,
   book2,
@@ -34,13 +37,13 @@ describe('TrendingBooks', () => {
     mockQuery(trendingBooksDoc, trendingBooksResponse, { status: 500 });
     await renderComponent({ duration: 'lastWeek' });
     await waitForElementToBeRemoved(screen.getByRole('progressbar'));
-    expect(screen.getByText('Error loading trending books')).toBeVisible();
+    expectTextToBeVisible('Error loading trending books');
   });
 
   it('should show books', async () => {
     await renderComponent({ duration: 'lastWeek' });
     await waitForElementToBeRemoved(screen.getByRole('progressbar'));
-    expect(screen.getByText(book1.title!)).toBeVisible();
-    expect(screen.getByText(book2.title!)).toBeVisible();
+    expectTextToBeVisible(book1.title!);
+    expectTextToBeVisible(book2.title!);
   });
 });

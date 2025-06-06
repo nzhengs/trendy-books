@@ -3,7 +3,10 @@ import { BookDetail } from '@/components/BookDetail.tsx';
 import { book1Detail, book1DetailResponse } from '@/apis/mocks.ts';
 import { mockQuery } from '@/utils/MockServer.ts';
 import { bookDetailDoc } from '@/apis/hardcover/queryDocuments.ts';
-import { renderWithProviders } from '@/utils/TestUtils.tsx';
+import {
+  expectTextToBeVisible,
+  renderWithProviders,
+} from '@/utils/TestUtils.tsx';
 
 const renderComponent = () =>
   renderWithProviders(<BookDetail id={book1Detail.id} />);
@@ -20,20 +23,20 @@ describe('BookDetail', () => {
     mockQuery(bookDetailDoc, book1DetailResponse, { status: 500 });
     await renderComponent();
     await waitForElementToBeRemoved(screen.getByRole('progressbar'));
-    expect(screen.getByText('Error loading book detail')).toBeVisible();
+    expectTextToBeVisible('Error loading book detail');
   });
 
   it('should show message for invalid book id', async () => {
     mockQuery(bookDetailDoc, { data: { books_by_pk: null } });
     await renderComponent();
     await waitForElementToBeRemoved(screen.getByRole('progressbar'));
-    expect(screen.getByText('Unable to find the book')).toBeVisible();
+    expectTextToBeVisible('Unable to find the book');
   });
 
   it('should render book detail', async () => {
     await renderComponent();
     await waitForElementToBeRemoved(screen.getByRole('progressbar'));
-    expect(screen.getByText(book1Detail.title!)).toBeVisible();
+    expectTextToBeVisible(book1Detail.title!);
 
     expect(screen.getByAltText(book1Detail.title!)).toHaveAttribute(
       'src',

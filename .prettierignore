@@ -4,3 +4,4 @@ yarn.lock
 coverage
 dist
 src/routeTree.gen.ts
+src/apis/hardcover/graphql-env.d.ts
