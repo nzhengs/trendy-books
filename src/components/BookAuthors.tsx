@@ -9,10 +9,11 @@ export const BookAuthors = ({ authors }: BookAuthorsProps) => {
 
   return (
     <>
-      {author.map(a => (
-        <span key={a?.id} className="px-1">
-          {a?.name}
-        </span>
+      {author.map((a, index) => (
+        <>
+          {index !== 0 ? ', ' : ''}
+          <span key={a?.id}>{a?.name}</span>
+        </>
       ))}
     </>
   );
