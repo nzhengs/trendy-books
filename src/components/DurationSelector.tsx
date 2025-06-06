@@ -9,18 +9,22 @@ export const DurationSelector = ({
   value,
   onChange,
 }: DurationSelectorProps) => (
-  <fieldset>
+  <fieldset className="flex flex-col md:flex-row">
+    <legend className="font-bold text-xl ">Choose duration</legend>
     {durationOptions.map(option => (
-      <label key={option.key} className="mx-2 cursor-pointer">
+      <div key={option.key} className="mx-2 cursor-pointer inline">
         <input
           type="radio"
           name="duration"
+          id={option.key}
           value={option.key}
           defaultChecked={option.key === value}
           onChange={() => onChange(option.key)}
         />
-        {' '}{option.label}
-      </label>
+        <label htmlFor={option.key} className="ms-2 text-sm">
+          {option.label}
+        </label>
+      </div>
     ))}
   </fieldset>
 );
