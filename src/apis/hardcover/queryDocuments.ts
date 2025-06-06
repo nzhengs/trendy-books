@@ -49,7 +49,7 @@ export const bookDetailDoc = graphql(`
         }
       }
       reviews: user_books(
-        limit: 5
+        limit: 10
         where: {
           review_raw: { _is_null: false }
           has_review: { _eq: true }
