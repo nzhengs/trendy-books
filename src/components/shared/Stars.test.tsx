@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { Stars } from '@/components/Stars.tsx';
+import { Stars } from '@/components/shared/Stars.tsx';
 
 describe('Stars', () => {
   it('should render stars', () => {

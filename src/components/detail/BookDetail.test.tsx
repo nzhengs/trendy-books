@@ -1,5 +1,5 @@
 import { screen, waitForElementToBeRemoved } from '@testing-library/react';
-import { BookDetail } from '@/components/BookDetail.tsx';
+import { BookDetail } from '@/components/detail/BookDetail';
 import { book1Detail, book1DetailResponse } from '@/apis/mocks.ts';
 import { mockQuery } from '@/utils/MockServer.ts';
 import { bookDetailDoc } from '@/apis/hardcover/queryDocuments.ts';

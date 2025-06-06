@@ -1,5 +1,5 @@
-import { Star } from '@/components/Star.tsx';
-import { DotSeparator } from './DotSeparator';
+import { DotSeparator } from '../shared/DotSeparator';
+import { Star } from '../shared/Star';
 
 export type RatingProps = {
   rating: number;

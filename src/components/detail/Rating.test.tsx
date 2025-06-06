@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { Rating } from '@/components/Rating.tsx';
+import { Rating } from '@/components/detail/Rating';
 import { expectTextToBeVisible } from '@/utils/TestUtils';
 
 describe('Rating', () => {

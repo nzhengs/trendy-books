@@ -1,8 +1,8 @@
 import { useBookDetail } from '@/apis/BooksApi.ts';
-import { BookAuthors } from './BookAuthors';
+import { BookAuthors } from '../shared/BookAuthors';
 import { Rating } from './Rating';
 import { Reviews } from './Reviews';
-import { DotSeparator } from './DotSeparator';
+import { DotSeparator } from '../shared/DotSeparator';
 
 export type BookDetailProps = {
   id: number;

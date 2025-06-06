@@ -1,5 +1,5 @@
 import { book1Detail } from '@/apis/mocks.ts';
-import { Reviews } from '@/components/Reviews.tsx';
+import { Reviews } from '@/components/detail/Reviews';
 import { expectTextToBeVisible } from '@/utils/TestUtils';
 import { render, screen } from '@testing-library/react';
 

@@ -1,5 +1,4 @@
-import type { DurationOption } from '@/components/durationOptions.ts';
-import { durationOptions } from '@/components/durationOptions.ts';
+import { durationOptions, type DurationOption } from './durationOptions';
 
 export type DurationSelectorProps = {
   value: DurationOption;

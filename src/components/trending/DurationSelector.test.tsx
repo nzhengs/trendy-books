@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
-import { DurationSelector } from '@/components/DurationSelector.tsx';
-import { durationOptions } from '@/components/durationOptions.ts';
+import { DurationSelector } from '@/components/trending/DurationSelector.tsx';
+import { durationOptions } from '@/components/trending/durationOptions.ts';
 
 describe('DurationSelector', () => {
   it('renders all duration options', () => {

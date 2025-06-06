@@ -2,7 +2,7 @@ import { screen, waitForElementToBeRemoved } from '@testing-library/react';
 import {
   TrendingBooks,
   type TrendingBooksProps,
-} from '@/components/TrendingBooks.tsx';
+} from '@/components/trending/TrendingBooks';
 import {
   expectTextToBeVisible,
   renderWithProviders,

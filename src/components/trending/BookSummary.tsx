@@ -1,5 +1,5 @@
 import type { BookSummaryT } from '@/apis/BooksApi.ts';
-import { BookAuthors } from './BookAuthors';
+import { BookAuthors } from '../shared/BookAuthors';
 import { Link } from '@tanstack/react-router';
 
 export type BookSummaryProps = {

@@ -1,4 +1,4 @@
-import {  describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { BookSummary } from './BookSummary';
 import { screen } from '@testing-library/react';
 import { expectTextToBeVisible, renderWithProviders } from '@/utils/TestUtils';

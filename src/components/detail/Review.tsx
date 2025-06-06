@@ -1,5 +1,5 @@
 import type { BookReviewT } from '@/apis/BooksApi.ts';
-import { Stars } from '@/components/Stars.tsx';
+import { Stars } from '@/components/shared/Stars.tsx';
 
 export type ReviewProps = {
   review: BookReviewT;

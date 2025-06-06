@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { BookDetail } from '@/components/BookDetail';
+import { BookDetail } from '@/components/detail/BookDetail';
 
 export const Route = createFileRoute('/books/$bookId/$slug')({
   component: BookDetailRouteComponent,

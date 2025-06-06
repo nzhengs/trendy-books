@@ -1,4 +1,4 @@
-import { Star } from '@/components/Star.tsx';
+import { Star } from './Star';
 
 export type StarsProps = {
   number: number;
