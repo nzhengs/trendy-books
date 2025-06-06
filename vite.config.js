@@ -20,6 +20,7 @@ export default defineConfig({
       reporter: ['text', 'html'],
       include: ['src/**/*.{ts,tsx}'],
       skipFull: true,
+      thresholds: { 100: true },
       exclude: [
         'src/main.tsx',
         'src/reportWebVitals.ts',
