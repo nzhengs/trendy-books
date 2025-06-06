@@ -8,9 +8,9 @@ export const DurationSelector = ({
   value,
   onChange,
 }: DurationSelectorProps) => (
-  <div className="flex flex-col md:flex-row border-gray-400 border-b pb-2">
+  <div className="flex flex-col md:flex-row border-gray-400 border-b">
     {durationOptions.map(option => (
-      <label key={option.key} className="mr-4 cursor-pointer inline text-sm">
+      <label key={option.key} className="mr-4 cursor-pointer inline text-sm h-8">
         <input
           type="radio"
           name="duration"
