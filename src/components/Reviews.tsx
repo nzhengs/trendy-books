@@ -10,7 +10,7 @@ export const Reviews = ({ id, reviews }: ReviewsProps) => {
     <div id={id}>
       <h3 className="py-3 text-xl font-bold"> Latest Reviews</h3>
       <ul className="divide-y divide-gray-200 ">
-      {reviews.map(r => (
+        {reviews.map(r => (
           <Review key={r.user.id} review={r} />
         ))}
       </ul>

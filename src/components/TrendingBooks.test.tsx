@@ -26,19 +26,19 @@ describe('TrendingBooks', () => {
   });
 
   it('should show progressbar', async () => {
-    await renderComponent({duration:'lastWeek'});
+    await renderComponent({ duration: 'lastWeek' });
     expect(screen.getByRole('progressbar')).toBeVisible();
   });
 
   it('should show error', async () => {
     mockQuery(trendingBooksDoc, trendingBooksResponse, { status: 500 });
-    await renderComponent({duration:'lastWeek'});
+    await renderComponent({ duration: 'lastWeek' });
     await waitForElementToBeRemoved(screen.getByRole('progressbar'));
     expect(screen.getByText('Error loading trending books')).toBeVisible();
   });
 
   it('should show books', async () => {
-    await renderComponent({duration:'lastWeek'});
+    await renderComponent({ duration: 'lastWeek' });
     await waitForElementToBeRemoved(screen.getByRole('progressbar'));
     expect(screen.getByText(book1.title!)).toBeVisible();
     expect(screen.getByText(book2.title!)).toBeVisible();

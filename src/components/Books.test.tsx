@@ -5,7 +5,7 @@ import {
 import { trendingBooksResponse, booksSummariesResponse } from '@/apis/mocks';
 import { mockQuery } from '@/utils/MockServer';
 import { Books } from './Books';
-import {  screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { renderWithProviders } from '@/utils/TestUtils';
 
 const renderComponent = () => renderWithProviders(<Books />);

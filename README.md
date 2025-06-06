@@ -1,5 +1,4 @@
-Trendy Books
-=============
+# Trendy Books
 
 View trending books using [Hardcover](https://hardcover.app/) graphql api.
 
@@ -11,7 +10,7 @@ View trending books using [Hardcover](https://hardcover.app/) graphql api.
 
 ```bash
 npm install
-npm run dev
+npm start
 ```
 
 # Building For Production

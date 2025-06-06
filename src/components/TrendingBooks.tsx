@@ -13,11 +13,11 @@ export const TrendingBooks = ({ duration }: TrendingBooksProps) => {
 
   const {
     data: trendingBooks,
-    isPending, 
+    isPending,
     isError,
   } = useTrendingBooks(dateRange);
 
-    if (isPending) {
+  if (isPending) {
     // <progress> is broken with tailwindcss
     // https://github.com/tailwindlabs/tailwindcss/issues/3357
     // return <progress aria-label="Loading..."></progress>;

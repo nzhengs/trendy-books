@@ -9,9 +9,9 @@ export const Books = () => {
     <>
       <h1 className="text-2xl font-bold text-gray-900">Trending Books</h1>
       <div className="py-5">
-      <DurationSelector value={duration} onChange={setDuration} />
+        <DurationSelector value={duration} onChange={setDuration} />
       </div>
-      <TrendingBooks duration={duration}/>
+      <TrendingBooks duration={duration} />
     </>
   );
 };
