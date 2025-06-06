@@ -11,19 +11,17 @@ export const DurationSelector = ({
 }: DurationSelectorProps) => (
   <div className="flex flex-col md:flex-row border-gray-400 border-b">
     {durationOptions.map(option => (
-      <div key={option.key} className="mx-2 cursor-pointer inline">
+      <label key={option.key} className="mr-2 cursor-pointer inline text-sm">
         <input
           type="radio"
           name="duration"
-          id={option.key}
           value={option.key}
           defaultChecked={option.key === value}
           onChange={() => onChange(option.key)}
+          className="mr-1"
         />
-        <label htmlFor={option.key} className="ms-2 text-sm">
-          {option.label}
-        </label>
-      </div>
+        {option.label}
+      </label>
     ))}
   </div>
 );
