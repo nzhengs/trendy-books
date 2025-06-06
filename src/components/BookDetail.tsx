@@ -12,8 +12,10 @@ export const BookDetail = ({ id }: BookDetailProps) => {
   const { data: book, isPending, isError } = useBookDetail(id);
 
   if (isPending) {
-    // TODO: https://github.com/tailwindlabs/tailwindcss/issues/3357
-    return <progress aria-label="Loading..."></progress>;
+    // <progress> is broken with tailwindcss
+    // https://github.com/tailwindlabs/tailwindcss/issues/3357
+    // return <progress aria-label="Loading..."></progress>;
+    return <span role="progressbar">Loading...</span>;
   }
 
   if (isError) {
